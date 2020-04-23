@@ -4,3 +4,11 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
+const wasm = fetch('./node_modules/vscode-oniguruma-wasm/release/onig.wasm');
+
+wasm.then((response) => {
+    return onig.loadWASM(response);
+}).then(() => {
+    console.log(`initialized OK!`);
+});
